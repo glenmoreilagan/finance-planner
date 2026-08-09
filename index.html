@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#13423f" />
+    <title>Pera Goals</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="top-panel">
+        <div>
+          <p class="eyebrow">Savings planner</p>
+          <h1>Pera Goals</h1>
+        </div>
+        <div class="summary-pill">
+          <span id="totalSaved">PHP 0</span>
+          <small>saved</small>
+        </div>
+      </section>
+
+      <section class="overview-grid" aria-label="Finance overview">
+        <article>
+          <span id="goalCount">0</span>
+          <small>goals</small>
+        </article>
+        <article>
+          <span id="categoryCount">0</span>
+          <small>categories</small>
+        </article>
+        <article>
+          <span id="averageProgress">0%</span>
+          <small>average</small>
+        </article>
+      </section>
+
+      <section class="tabs" aria-label="App views">
+        <button class="tab is-active" data-view="goals" type="button">Goals</button>
+        <button class="tab" data-view="categories" type="button">Categories</button>
+      </section>
+
+      <section class="view is-visible" id="goalsView">
+        <form class="panel" id="goalForm">
+          <div class="panel-heading">
+            <h2>Create Goal</h2>
+            <button class="icon-button" type="submit" aria-label="Add goal">+</button>
+          </div>
+          <label>
+            Goal name
+            <input id="goalName" required placeholder="Emergency fund" autocomplete="off" />
+          </label>
+          <div class="field-row">
+            <label>
+              Target
+              <input id="goalTarget" required min="1" step="100" type="text" inputmode="numeric" placeholder="50000" />
+            </label>
+            <label>
+              Saved
+              <input id="goalSaved" min="0" step="100" type="text" inputmode="numeric" placeholder="10000" />
+            </label>
+          </div>
+          <label>
+            Category
+            <select id="goalCategory"></select>
+          </label>
+          <label>
+            Goal set
+            <input id="goalSet" list="goalSets" required placeholder="Personal, Family, Investing" autocomplete="off" />
+            <datalist id="goalSets"></datalist>
+          </label>
+        </form>
+
+        <div class="section-title">
+          <h2>Goal Sets</h2>
+          <select id="setFilter" aria-label="Filter goal set"></select>
+        </div>
+        <div class="goal-list" id="goalList"></div>
+      </section>
+
+      <section class="view" id="categoriesView">
+        <form class="panel" id="categoryForm">
+          <div class="panel-heading">
+            <h2>Add Category</h2>
+            <button class="icon-button" type="submit" aria-label="Add category">+</button>
+          </div>
+          <label>
+            Category name
+            <input id="categoryName" required placeholder="PhilHealth, SSS, Banks, Stocks" autocomplete="off" />
+          </label>
+          <label>
+            Color
+            <input id="categoryColor" type="color" value="#0f9f8f" />
+          </label>
+        </form>
+        <div class="category-list" id="categoryList"></div>
+      </section>
+    </main>
+
+    <template id="goalTemplate">
+      <article class="goal-card">
+        <div class="goal-header">
+          <div>
+            <h3></h3>
+            <p></p>
+          </div>
+          <button class="ghost-button" type="button">Delete</button>
+        </div>
+        <div class="progress-track">
+          <span></span>
+        </div>
+        <div class="money-row">
+          <strong></strong>
+          <small></small>
+        </div>
+        <div class="quick-add">
+          <button type="button" data-add="50">+50</button>
+          <button type="button" data-add="100">+100</button>
+          <button type="button" data-add="200">+200</button>
+          <button type="button" data-add="500">+500</button>
+          <button type="button" data-add="1000">+1k</button>
+          <button type="button" data-add="5000">+5k</button>
+        </div>
+      </article>
+    </template>
+
+    <template id="categoryTemplate">
+      <article class="category-card">
+        <span class="swatch"></span>
+        <div>
+          <h3></h3>
+          <small></small>
+        </div>
+        <button class="ghost-button" type="button">Delete</button>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
