@@ -1,3 +1,5 @@
+# Vibe Coded using codex
+
 # Pera Goals
 
 Pera Goals is a small mobile-first personal finance planner for tracking savings goals in Philippine pesos. It runs entirely in the browser with plain HTML, CSS, and JavaScript.
